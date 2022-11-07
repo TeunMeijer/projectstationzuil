@@ -24,6 +24,8 @@ tijd = berichtjes[2]
 naam = berichtjes[3]
 plaats = berichtjes[4]
 berichten.close()
+if 'ß' in hetbericht:
+    bericht.replace('ß', ',')
 
 print('het bericht: {} \ndatum en tijd: {},{} \nnaam: {} \nstation: {}'.format(hetbericht, datum, tijd, naam, plaats))
 goedgekeurd = bool(input('goedgekeurd(als hij fout is vul niks in anders vul iets in): '))

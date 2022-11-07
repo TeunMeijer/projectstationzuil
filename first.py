@@ -2,9 +2,12 @@ import datetime
 import random
 
 bericht = input('wat wil je zeggen: ')
+if ',' in bericht:
+    bericht.replace(',', 'ß')
 while len(bericht) > 140:
     print('uw bericht is te lang u kan maximaal 140 caracters gebruiken')
     bericht = input('wat wil je zeggen: ')
+
 datumtijd = datetime.datetime.today()
 datum = str(datumtijd.strftime("%a %d %b %Y"))
 tijd = str(datumtijd.strftime("%X"))
@@ -22,3 +25,6 @@ print('Bericht: {} \nDatum en tijd: {}: {} \nNaam: {} \nStation: {}'
 
 berichten.write('{}, {}, {}, {}, {}'.format(bericht, datum, tijd, naam, randstation))
 berichten.close()
+
+
+
