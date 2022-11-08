@@ -20,7 +20,7 @@ cursor.execute(query)  # voer het uit
 records = cursor.fetchall()  # noem wat er uitkomt records
 conn.close()  # sluit de database
 
-bericht0 = records[0]  # de berichten die uit de database komen
+bericht0 = records[0]  # trek de dingen die uit de database moeten komen uit de database
 bericht1 = records[1]
 bericht2 = records[2]
 bericht3 = records[3]
@@ -75,7 +75,7 @@ def denhaag():  # functie van denhaag
     tempra['text'] = '{}C'.format(final[0])  # wat je het neerzet
     weerbuiten['text'] = final[1]
 
-    denhaag = Label(master=root, text='Welkom op station Den Haag:', font=(20), height=2)  # de Stations naam
+    denhaag = Label(master=root, text='Welkom op station Den Haag:', font=(20), height=2)  # de naam van het station
     denhaag.pack()
 
     if 'True' in ovfiets:  # of het plaatje van de ov fiets geplaatst moet worden en waar
@@ -299,8 +299,7 @@ buttonB = Button(master=root, font=(16), text=station[1], relief=RAISED,
                  command=haarlem)  # knop 2 als word ingedrukt open functie haarlem
 buttonB.pack(ipadx=10, ipady=10)
 
-buttonC = Button(master=root, font=(16), text=station[2], relief=RAISED, command=zaandam)  # knop 3 als word ingedrukt
-# open functie zaandam
+buttonC = Button(master=root, font=(16), text=station[2], relief=RAISED, command=zaandam)
 buttonC.pack(ipadx=10, ipady=10)
 
 root.geometry("900x600")  # de grote van het scherm

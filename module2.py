@@ -12,6 +12,10 @@ deid.write(geschrevenid)    #zet het nieuwe nummer in het bestand met de id's
 deid.close() # sluit het bstand met het nieuwe nummer
 
 datumtijd = datetime.datetime.today() # maak de tijd aan
+
+
+# voeg de berichten van module 1 toe
+
 datumbeoordeling = str(datumtijd.strftime("%a %d %b %Y")) # de datum
 tijdbeoordeling = str(datumtijd.strftime("%X")) # de tijd
 
@@ -27,11 +31,11 @@ berichten.close()# sluit het bestand met het bericht
 hetbericht = hetberichte.replace('ß', ',') #verander in het bericht het teken naar een comma
 
 print('het bericht: {} \ndatum en tijd: {},{} \nnaam: {} \nstation: {}'.format(hetbericht, datum, tijd, naam, plaats)) #print het bericht
-goedgekeurd = bool(input('goedgekeurd(als hij fout is vul niks in anders vul iets in): '))# keur het bericht goed of four
+goedgekeurd = bool(input('goedgekeurd(als hij fout is vul niks in anders vul iets in): '))# keur het bericht goed of fout
 naammoderator = input('naam: ')# voer de naam van de moderator toe
 email = input('email: ')# voer het e-mailadres van de moderator toe
 print(
-    'het bericht: {} \ndatum en tijd: {},{} \nnaam: {} \nstation: {}goedgekeurd: {} \ndatum en tijd beoordeling: {}, {} \n'
+    'het bericht: {} \ndatum en tijd: {},{} \nnaam: {} \nstation: {}\ngoedgekeurd: {} \ndatum en tijd beoordeling: {}, {} \n'
     'naam en emailadres beoordeler: {} ,{}'
     .format(hetbericht, datum, tijd, naam, plaats, goedgekeurd, datumbeoordeling, tijdbeoordeling, naammoderator,
             email))# print het hele bericht
@@ -43,7 +47,7 @@ eenbericht = ebericht.read() # en lees het
 eenberichtje = eenbericht.split('\n')  # splits het bestand op de enter
 ebericht.close()# sluit het bestand
 
-del eenberichtje[0] # verwijder de eerste regel
+del eenberichtje[0] # verwijder de eerste regel van het csv bestand
 
 eebericht = open("berichten.csv", 'w') # open het bestand opnieuw
 eebericht.write("\n".join(eenberichtje))# schrijf alles in het bestand behalve de verwijderde regel
