@@ -18,14 +18,13 @@ tijdbeoordeling = str(datumtijd.strftime("%X"))
 berichten = open("berichten.csv")
 bericht = berichten.readline()
 berichtjes = bericht.split(',')
-hetbericht = berichtjes[0]
+hetberichte = berichtjes[0]
 datum = berichtjes[1]
 tijd = berichtjes[2]
 naam = berichtjes[3]
 plaats = berichtjes[4]
 berichten.close()
-if 'ß' in hetbericht:
-    bericht.replace('ß', ',')
+hetbericht = hetberichte.replace('ß', ',')
 
 print('het bericht: {} \ndatum en tijd: {},{} \nnaam: {} \nstation: {}'.format(hetbericht, datum, tijd, naam, plaats))
 goedgekeurd = bool(input('goedgekeurd(als hij fout is vul niks in anders vul iets in): '))
@@ -37,6 +36,17 @@ print(
     .format(hetbericht, datum, tijd, naam, plaats, goedgekeurd, datumbeoordeling, tijdbeoordeling, naammoderator,
             email))
 
+
+ebericht = open("berichten.csv", 'r')
+
+eenbericht = ebericht.read()
+eenberichtje = eenbericht.split('\n')
+ebericht.close()
+
+del eenberichtje[0]
+
+eebericht = open("berichten.csv", 'w')
+eebericht.write("\n".join(eenberichtje))
 
 conn = psycopg2.connect(
     host="localhost",
@@ -54,14 +64,4 @@ cursor.execute(query, data)
 conn.commit()
 conn.close()
 
-ebericht = open("berichten.csv", 'r')
 
-eenbericht = ebericht.read()
-eenberichtje = eenbericht.split('\n')
-print(eenberichtje[0])
-ebericht.close()
-
-del eenberichtje[1]
-
-eebericht = open("berichten.csv", 'w')
-eebericht.write("\n".join(eenberichtje))

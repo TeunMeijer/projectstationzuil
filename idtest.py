@@ -5,7 +5,7 @@ eenberichtje = eenbericht.split('\n')
 print(eenberichtje[0])
 ebericht.close()
 
-del eenberichtje[1]
+del eenberichtje[0]
 
 eebericht = open("berichten.csv", 'w')
 eebericht.write("\n".join(eenberichtje))
